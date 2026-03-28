@@ -17,6 +17,33 @@ pokeprogress/
  
 ---
  
+## CI / Automated Code Review
+
+This project uses two GitHub Actions workflows powered by Claude Code.
+
+### Claude Code Review (`claude-code-review.yml`)
+
+Runs automatically on every pull request (open, push, or reopen). A fleet of specialized agents analyzes the diff in the context of the full codebase and posts inline review comments on the PR. Reviews cover code quality, logic errors, security vulnerabilities, and Rails/React best practices. The workflow does not approve or block PRs — it supplements human review.
+
+### Claude PR Assistant (`claude.yml`)
+
+Enables on-demand AI assistance anywhere in the repo. Mention `@claude` in any PR comment, review, or issue and Claude will respond in context — answering questions about the code, explaining decisions, or suggesting improvements.
+
+Then add it under **Settings → Secrets and variables → Actions → New repository secret**.
+
+### Dependabot (`dependabot.yml`)
+
+Dependabot runs weekly checks for outdated dependencies and opens pull requests automatically. It covers:
+
+- **Ruby gems** — backend dependencies via Bundler (`/backend`)
+- **npm packages** — frontend dependencies (`/frontend`)
+- **GitHub Actions** — workflow action versions (`/`)
+- **Docker base images** — Dockerfiles in both `/backend` and `/frontend`
+
+No setup required — Dependabot is enabled by the config file at `.github/dependabot.yml`.
+
+---
+ 
 ## Local Setup
  
 > Prerequisites: [Docker Desktop](https://www.docker.com/products/docker-desktop/) and Git.
