@@ -29,8 +29,6 @@ Runs automatically on every pull request (open, push, or reopen). A fleet of spe
 
 Enables on-demand AI assistance anywhere in the repo. Mention `@claude` in any PR comment, review, or issue and Claude will respond in context — answering questions about the code, explaining decisions, or suggesting improvements.
 
-Then add it under **Settings → Secrets and variables → Actions → New repository secret**.
-
 ### Dependabot (`dependabot.yml`)
 
 Dependabot runs weekly checks for outdated dependencies and opens pull requests automatically. It covers:
