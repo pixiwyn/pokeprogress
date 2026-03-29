@@ -17,30 +17,31 @@ pokeprogress/
  
 ---
  
-## CI / Automated Code Review
+## CI / CD
 
-This project uses two GitHub Actions workflows powered by Claude Code.
+This project uses GitHub Actions (free for public repos) to automate testing, linting, security scanning, and code review on every push and pull request.
 
-### Claude Code Review (`claude-code-review.yml`)
+### CI Pipeline (`ci.yml`)
 
-Runs automatically on every pull request (open, push, or reopen). A fleet of specialized agents analyzes the diff in the context of the full codebase and posts inline review comments on the PR. Reviews cover code quality, logic errors, security vulnerabilities, and Rails/React best practices. The workflow does not approve or block PRs — it supplements human review.
+Runs five parallel jobs on every PR and push to `main`:
 
-### Claude PR Assistant (`claude.yml`)
+- **scan_ruby** — Brakeman static analysis + bundler-audit for known gem vulnerabilities
+- **lint_ruby** — RuboCop with Rails Omakase style (cached for speed)
+- **test_ruby** — Full Rails test suite against a live PostgreSQL service
+- **lint_frontend** — ESLint across all React/JSX source files
+- **build_frontend** — Vite production build to catch broken imports and build errors
 
-Enables on-demand AI assistance anywhere in the repo. Mention `@claude` in any PR comment, review, or issue and Claude will respond in context — answering questions about the code, explaining decisions, or suggesting improvements.
+### AI Code Review (`claude-code-review.yml`)
 
-Then add it under **Settings → Secrets and variables → Actions → New repository secret**.
+Runs automatically on every pull request. Claude Code analyzes the diff in the context of the full codebase and posts inline review comments covering code quality, logic errors, security vulnerabilities, and Rails/React best practices. Supplements human review — does not approve or block PRs.
+
+### AI PR Assistant (`claude.yml`)
+
+Mention `@claude` in any PR comment, review, or issue and Claude will respond in context — answering questions about the code, explaining decisions, or suggesting improvements.
 
 ### Dependabot (`dependabot.yml`)
 
-Dependabot runs weekly checks for outdated dependencies and opens pull requests automatically. It covers:
-
-- **Ruby gems** — backend dependencies via Bundler (`/backend`)
-- **npm packages** — frontend dependencies (`/frontend`)
-- **GitHub Actions** — workflow action versions (`/`)
-- **Docker base images** — Dockerfiles in both `/backend` and `/frontend`
-
-No setup required — Dependabot is enabled by the config file at `.github/dependabot.yml`.
+Weekly automated dependency updates for Ruby gems, npm packages, GitHub Actions versions, and Docker base images across both frontend and backend.
 
 ---
  
