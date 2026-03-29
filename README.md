@@ -137,4 +137,11 @@ docker compose up --build backend
 # Install a new npm package (after editing package.json)
 docker compose up --build frontend
 ```
+
+---
+
+## Deployment
+
+Deployed on [Railway](https://railway.com) as three services: a PostgreSQL plugin, the Rails API (via Docker), and a static React frontend (via Nixpacks). Each service has a `railway.json` in its directory. See `.env.example` for required environment variables.
+
 ---
