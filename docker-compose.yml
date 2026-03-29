@@ -47,6 +47,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      target: dev
     container_name: pokeprogress_frontend
     restart: unless-stopped
     depends_on:
