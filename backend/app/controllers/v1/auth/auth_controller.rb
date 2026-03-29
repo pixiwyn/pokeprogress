@@ -1,5 +1,5 @@
 class V1::Auth::AuthController < ApplicationController
-  skip_before_action :authenticate_user, only: [ :signup, :login ]
+  skip_before_action :authenticate_user, only: [ :signup, :login, :logout ]
 
   def signup
     user = User.new(auth_params)
