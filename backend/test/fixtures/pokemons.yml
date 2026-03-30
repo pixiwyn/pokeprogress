@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  thumbnail: MyString
+  name: MyString
+  pokeapi_id: MyString
+  region: one
+  generation: one
+
+two:
+  thumbnail: MyString
+  name: MyString
+  pokeapi_id: MyString
+  region: two
+  generation: two

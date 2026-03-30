@@ -1,13 +1,15 @@
 const API_URL = import.meta.env.VITE_API_URL
 
 export async function api(path, { body, ...options } = {}) {
-  const token = localStorage.getItem('token')
+  const user = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : null
 
   const res = await fetch(`${API_URL}${path}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }),
+      ...(user && { Authorization: `Bearer ${user.token}` }),
       ...options.headers,
     },
     ...(body && { body: JSON.stringify(body) }),

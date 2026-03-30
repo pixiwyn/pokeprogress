@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :v1 do
+    resources :pokedex, only: [ :index ]
+    resources :games, only: [ :index ]
+    resources :notes, only: [ :create ]
+    get "notes/:pokemon_id", to: "notes#show"
+    resources :progress, only: [:create]
+    get "progress", to: "progress#show"
     namespace :auth do
-      get "auth/signup"
-      get "auth/login"
-      get "auth/logout"
       post "signup", to: "auth#signup"
       post "login", to: "auth#login"
       delete "logout", to: "auth#logout"
