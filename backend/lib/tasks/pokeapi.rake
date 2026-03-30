@@ -28,7 +28,6 @@ namespace :pokeapi do
       pokemon_record.generation = gen_record
       pokemon_record.thumbnail = pokemon["sprites"]["other"]["official-artwork"]["front_default"]
       pokemon_record.save!
-
     end
 
     puts "Done!"
