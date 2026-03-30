@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :games, only: [ :index ]
     resources :notes, only: [ :create ]
     get "notes/:pokemon_id", to: "notes#show"
-    resources :progress, only: [:create]
+    resources :progress, only: [ :create ]
     get "progress", to: "progress#show"
     namespace :auth do
       post "signup", to: "auth#signup"

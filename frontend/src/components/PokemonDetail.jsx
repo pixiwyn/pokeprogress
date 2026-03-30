@@ -33,7 +33,7 @@ function PokemonDetail({ selectedPokemon, games }) {
       })
       console.log('note saved')
     }, 500)
-    setNote((prev) => note)
+    setNote(() => note)
   }
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 class PokeapiService
     ENDPOINT = "https://pokeapi.co/api/v2"
 
-    def self.get_url(url) 
+    def self.get_url(url)
          HTTParty.get("#{url}")
     end
 

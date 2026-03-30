@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import { api } from '../api'
 
 function Sidebar(games) {
   console.log('sidebar - games', games)

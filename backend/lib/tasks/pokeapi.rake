@@ -7,8 +7,8 @@ namespace :pokeapi do
     generation = 1
 
     gen = PokeapiService.get_generation(generation)
-    puts gen["main_region"]  
-    puts gen["pokemon_species"] 
+    puts gen["main_region"]
+    puts gen["pokemon_species"]
 
     gen_record = Generation.find_or_create_by!(pokeapi_id: gen["id"]) do |g|
       g.name = gen["name"]
@@ -21,14 +21,14 @@ namespace :pokeapi do
     gen["pokemon_species"].each do |species|
       pokemon = PokeapiService.get_pokemon(species["url"].split("/").compact_blank.last)
       puts pokemon["name"]
-      pokemon_record = Pokemon.find_or_initialize_by(pokeapi_id: pokemon["id"]) 
+      pokemon_record = Pokemon.find_or_initialize_by(pokeapi_id: pokemon["id"])
       pokemon_record.name = pokemon["name"]
       pokemon_record.pokedex_number = pokemon["order"]
       pokemon_record.region = reg_record
       pokemon_record.generation = gen_record
       pokemon_record.thumbnail = pokemon["sprites"]["other"]["official-artwork"]["front_default"]
       pokemon_record.save!
-      
+
     end
 
     puts "Done!"
