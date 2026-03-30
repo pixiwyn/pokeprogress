@@ -3,6 +3,7 @@
 @theme {
   --color-bg-primary: #121217;
   --color-bg-secondary: #16161e;
+  --color-bg-highlight: #1e1e2a;
   --color-text-muted: #6a6a80;
   --color-accent: #e8c84a;
 }
@@ -19,5 +20,18 @@
     color: var(--color-accent);
     text-transform: uppercase;
     border-color: var(--color-text-muted);
+  }
+
+  nav {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-text-muted);
+  }
+
+  article {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-text-muted);
+  }
+
+  .dexEntry {
   }
 }

@@ -1,5 +1,5 @@
 class JwtService
-  SECRET = Rails.application.credentials.secret_key_base
+  SECRET = Rails.application.credentials.secret_key_base || Rails.application.secret_key_base
 
   def self.encode(payload)
     payload[:exp] = 15.minutes.from_now.to_i
